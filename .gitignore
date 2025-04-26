@@ -1,3 +1,7 @@
+ignore/
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+
 # Logs
 logs
 *.log
