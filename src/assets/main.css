@@ -1,0 +1,43 @@
+/* Base CSS for Christmas Too */
+
+:root {
+  --neon-pink: #ff0066;
+  --neon-blue: #00ffff;
+  --neon-yellow: #ffcc00;
+  --dark-bg: #0a0a0a;
+  --darker-bg: #000000;
+}
+
+@import './base.css';
+
+#app {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-pink);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-blue);
+}
+
+/* Hidden Easter Egg - add comment to page source */
+/*
+  THE SAVIOR CHOOMBAU
+  HE WOULD NOT DRINK HIMSELF
+  60:00
+*/
