@@ -1,14 +1,15 @@
 <template>
   <div class="celebrate-page">
     <h1>How To <span class="celebrate-text">Celebrate</span></h1>
-    
+
     <div class="content-grid">
       <div class="celebration-card">
         <div class="card-icon">
           <span class="icon">🥃</span>
         </div>
         <h3>Drink</h3>
-        <p>The Christmas Too tradition starts with a toast to Chunbau. Share drinks with friends during the coldest time of year.</p>
+        <p>The Christmas 2 tradition starts with a toast to Chunbau. Share drinks with friends during the coldest time
+          of year.</p>
         <div class="recipe">
           <h4>The Chunbau's Console</h4>
           <ul>
@@ -19,20 +20,21 @@
           </ul>
         </div>
       </div>
-      
+
       <div class="celebration-card">
         <div class="card-icon">
           <span class="icon">🎭</span>
         </div>
         <h3>Gather</h3>
-        <p>Invite friends and family during the barren stretch between holidays. Retell the tale of the first Christmas Too.</p>
+        <p>Invite friends and family during the barren stretch between holidays. Retell the tale of the first Christmas
+          2.</p>
         <div class="tip">
           <h4>Traditional Greeting</h4>
           <p>"May your console always be full"</p>
           <p>Response: "And your surge pricing low"</p>
         </div>
       </div>
-      
+
       <div class="celebration-card">
         <div class="card-icon">
           <span class="icon">🎁</span>
@@ -49,7 +51,7 @@
           </ul>
         </div>
       </div>
-      
+
       <div class="celebration-card">
         <div class="card-icon">
           <span class="icon">🙏</span>
@@ -59,18 +61,19 @@
         <div class="memory-ritual">
           <button @click="toggleMemory" class="memory-button">{{ memoryButtonText }}</button>
           <div v-if="showMemory" class="memory-text">
-            <p>Light a single blue candle at 60:00. Pass around a bottle of water, but no one drinks. Place it in the center of your gathering.</p>
+            <p>Light a single blue candle at 60:00. Pass around a bottle of water, but no one drinks. Place it in the
+              center of your gathering.</p>
             <p class="whisper-text">"His fingers blackened with the bite of frost..."</p>
           </div>
         </div>
       </div>
     </div>
-    
+
     <div class="date-reminder">
       <h2>February 25th</h2>
-      <p>Mark your calendar. Set a reminder. Christmas Too waits for no one.</p>
+      <p>Mark your calendar. Set a reminder. Christmas 2 waits for no one.</p>
     </div>
-    
+
     <div class="hidden-message" ref="hiddenImage"><!-- Easter egg --></div>
   </div>
 </template>
@@ -91,11 +94,11 @@ onMounted(() => {
   // Easter egg: Konami code reveals hidden image
   const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
   let konamiIndex = 0
-  
+
   document.addEventListener('keydown', (e) => {
     if (e.key === konamiCode[konamiIndex]) {
       konamiIndex++
-      
+
       if (konamiIndex === konamiCode.length) {
         // Reveal easter egg
         if (hiddenImage.value) {
@@ -198,14 +201,19 @@ h1 {
   line-height: 1.6;
 }
 
-.recipe, .tip, .gift-ideas, .memory-ritual {
+.recipe,
+.tip,
+.gift-ideas,
+.memory-ritual {
   background: rgba(0, 0, 0, 0.5);
   padding: 1.5rem;
   border-radius: 5px;
   border-left: 3px solid #00ffff;
 }
 
-.recipe h4, .tip h4, .gift-ideas h4 {
+.recipe h4,
+.tip h4,
+.gift-ideas h4 {
   color: #00ffff;
   margin-bottom: 1rem;
   font-size: 1.2rem;
@@ -255,8 +263,13 @@ ul li::before {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .whisper-text {
@@ -306,19 +319,26 @@ ul li::before {
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
-  50% { box-shadow: 0 0 25px rgba(0, 255, 255, 0.8); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+  }
 }
 
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
-  
+
   .celebration-card {
     padding: 1.5rem;
   }
-  
+
   .content-grid {
     grid-template-columns: 1fr;
   }

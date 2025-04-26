@@ -3,28 +3,29 @@
     <div class="snow-overlay"></div>
     <div class="christmas-decoration-left"></div>
     <div class="christmas-decoration-right"></div>
-    
+
     <div class="origins-container">
       <h1>The Origins</h1>
-      
+
       <div class="timeline">
         <div class="timeline-event">
           <div class="timeline-date">February 15</div>
           <div class="timeline-content">
             <h3>Alex Cullen's 30th Birthday</h3>
-            <p>The first Christmas Too occurred on this day.</p>
+            <p>The first Christmas 2 occurred on this day.</p>
             <div class="image-placeholder">
-              <img src="https://placehold.co/600x400/232323/ff0066?text=The+Beginning" alt="Symbolic beginning" />
+              <img src="../assets/the_beginning.jpg" alt="Symbolic beginning" />
               <span class="glitch-text">No faces shown</span>
             </div>
           </div>
         </div>
-        
+
         <div class="timeline-event">
           <div class="timeline-date">The Night</div>
           <div class="timeline-content">
             <h3>The Brookline Snowstorm</h3>
-            <p>Alex, Reilly, Brian, and Gabe were trapped in a horrific snowstorm in Brookline, unable to get home to Foxborough.</p>
+            <p>Alex, Reilly, Brian, and Gabe were trapped in a horrific snowstorm in Brookline, unable to get home to
+              Foxborough.</p>
             <div class="image-placeholder snowstorm-image">
               <img src="../assets/brookline_streets.jpg" alt="Snowy Brookline streets" />
               <div class="location-marker">BROOKLINE</div>
@@ -33,7 +34,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="timeline-event">
           <div class="timeline-date">60:00</div>
           <div class="timeline-content">
@@ -47,12 +48,12 @@
             </div>
           </div>
         </div>
-        
+
         <div class="timeline-event">
           <div class="timeline-date">Aftermath</div>
           <div class="timeline-content">
             <h3>A New Tradition</h3>
-            <p>Thus, Christmas Too was born - now celebrated annually on February 25th.</p>
+            <p>Thus, Christmas 2 was born - now celebrated annually on February 25th.</p>
             <div class="neo-crucifix">✝</div>
           </div>
         </div>
@@ -67,7 +68,11 @@ import { onMounted } from 'vue'
 
 onMounted(() => {
   const timelineEvents = document.querySelectorAll('.timeline-event')
-  
+  // Create a single message element outside any timeline event
+  const messageElement = document.createElement('div')
+  messageElement.className = 'hidden-message'
+  document.body.appendChild(messageElement)
+
   timelineEvents.forEach((event, index) => {
     event.addEventListener('click', () => {
       const messages = [
@@ -76,22 +81,13 @@ onMounted(() => {
         "The console water remained untouched",
         "February 25th: Mark it on your calendar"
       ]
-      
-      // Show a fleeting message
-      const message = document.createElement('div')
-      message.className = 'hidden-message'
-      message.textContent = messages[index % messages.length]
-      event.appendChild(message)
-      
+
+      // Update the existing message element
+      messageElement.textContent = messages[index % messages.length]
+      messageElement.classList.add('show')
+
       setTimeout(() => {
-        message.classList.add('show')
-      }, 100)
-      
-      setTimeout(() => {
-        message.classList.remove('show')
-        setTimeout(() => {
-          message.remove()
-        }, 500)
+        messageElement.classList.remove('show')
       }, 3000)
     })
   })
@@ -124,20 +120,20 @@ onMounted(() => {
 
 .christmas-decoration-left {
   left: 10px;
-  background-image: linear-gradient(transparent 0%, transparent 40%, transparent 60%, transparent 100%), 
-                    radial-gradient(circle at center, #ff0066 8px, transparent 8px),
-                    radial-gradient(circle at center, #00ffff 8px, transparent 8px),
-                    radial-gradient(circle at center, #ffcc00 8px, transparent 8px);
+  background-image: linear-gradient(transparent 0%, transparent 40%, transparent 60%, transparent 100%),
+    radial-gradient(circle at center, #ff0066 8px, transparent 8px),
+    radial-gradient(circle at center, #00ffff 8px, transparent 8px),
+    radial-gradient(circle at center, #ffcc00 8px, transparent 8px);
   background-size: 100% 150px;
   animation: decorations-move 10s linear infinite;
 }
 
 .christmas-decoration-right {
   right: 10px;
-  background-image: linear-gradient(transparent 0%, transparent 40%, transparent 60%, transparent 100%), 
-                    radial-gradient(circle at center, #ffcc00 8px, transparent 8px),
-                    radial-gradient(circle at center, #ff0066 8px, transparent 8px),
-                    radial-gradient(circle at center, #00ffff 8px, transparent 8px);
+  background-image: linear-gradient(transparent 0%, transparent 40%, transparent 60%, transparent 100%),
+    radial-gradient(circle at center, #ffcc00 8px, transparent 8px),
+    radial-gradient(circle at center, #ff0066 8px, transparent 8px),
+    radial-gradient(circle at center, #00ffff 8px, transparent 8px);
   background-size: 100% 150px;
   animation: decorations-move 10s linear infinite reverse;
 }
@@ -146,6 +142,7 @@ onMounted(() => {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 0 150px;
   }
@@ -165,8 +162,13 @@ onMounted(() => {
 }
 
 @keyframes snow {
-  0% { background-position: 0 0; }
-  100% { background-position: 500px 1000px; }
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 500px 1000px;
+  }
 }
 
 .origins-container {
@@ -281,12 +283,14 @@ h1 {
   animation: blink 2s infinite;
 }
 
-.pickup-image, .snowstorm-image {
+.pickup-image,
+.snowstorm-image {
   position: relative;
   border: 2px solid #00ffff;
 }
 
-.pickup-image img, .snowstorm-image img {
+.pickup-image img,
+.snowstorm-image img {
   filter: saturate(1.2) contrast(1.1);
 }
 
@@ -343,10 +347,24 @@ h1 {
 }
 
 @keyframes blink {
-  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+
+  0%,
+  19.999%,
+  22%,
+  62.999%,
+  64%,
+  64.999%,
+  70%,
+  100% {
     opacity: 1;
   }
-  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+
+  20%,
+  21.999%,
+  63%,
+  63.999%,
+  65%,
+  69.999% {
     opacity: 0.3;
   }
 }
@@ -374,51 +392,78 @@ h1 {
 }
 
 @keyframes glitchEffect {
-  0%, 100% { transform: translate(-50%, -50%); opacity: 0.8; }
-  92% { transform: translate(-52%, -50%); opacity: 0.8; }
-  94% { transform: translate(-50%, -53%); opacity: 0.8; }
-  96% { transform: translate(-51%, -48%); opacity: 0.8; }
-  98% { transform: translate(-49%, -50%); opacity: 0.8; }
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+  }
+
+  92% {
+    transform: translate(-52%, -50%);
+    opacity: 0.8;
+  }
+
+  94% {
+    transform: translate(-50%, -53%);
+    opacity: 0.8;
+  }
+
+  96% {
+    transform: translate(-51%, -48%);
+    opacity: 0.8;
+  }
+
+  98% {
+    transform: translate(-49%, -50%);
+    opacity: 0.8;
+  }
 }
 
 .hidden-message {
-  position: absolute;
-  top: -50px;
+  position: fixed;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
-  background: #ff0066;
+  background: rgba(255, 0, 102, 0.9);
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
   opacity: 0;
-  transition: all 0.5s ease;
-  box-shadow: 0 0 10px rgba(255, 0, 102, 0.5);
+  transition: opacity 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 0, 102, 0.7);
   pointer-events: none;
+  z-index: 9999;
+  max-width: 90%;
+  width: auto;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
 }
 
 .hidden-message.show {
   opacity: 1;
-  top: -70px;
 }
 
 @media (max-width: 768px) {
   .timeline::before {
     left: 30px;
   }
-  
+
   .timeline-event,
   .timeline-event:nth-child(odd) {
     flex-direction: column;
     margin-left: 40px;
   }
-  
+
   .timeline-date {
     width: auto;
     margin: 0 0 1rem 0;
     align-self: flex-start;
   }
-  
+
   h1 {
     font-size: 2.5rem;
   }

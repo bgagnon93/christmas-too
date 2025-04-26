@@ -1,4 +1,4 @@
-/* Base CSS for Christmas Too */
+/* Base CSS for Christmas 2 */
 
 :root {
   --neon-pink: #ff0066;
@@ -8,7 +8,7 @@
   --darker-bg: #000000;
 }
 
-@import './base.css';
+@import "./base.css";
 
 #app {
   max-width: 100%;

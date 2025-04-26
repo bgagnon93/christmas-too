@@ -29,17 +29,18 @@
           </div>
         </div>
       </div>
-      <h1>CHRISTMAS <span class="too">TOO</span></h1>
+      <h1>CHRISTMAS <span class="too">2</span></h1>
       <p class="tagline">The sequel to Christmas. February 25th.</p>
       <div class="countdown" v-if="daysUntil !== null">
-        <h2>{{ daysUntil }} days until Christmas Too</h2>
+        <h2>{{ daysUntil }} days until Christmas 2</h2>
       </div>
     </div>
-    
+
     <div class="description">
-      <p>Fill the gap between New Years and Easter. Gather with friends and family to laugh, drink, and celebrate life during the coldest time of the year.</p>
+      <p>Fill the gap between New Years and Easter. Gather with friends and family to laugh, drink, and celebrate life
+        during the coldest time of the year.</p>
     </div>
-    
+
     <div class="cta-section">
       <router-link to="/sacrament" class="cta-button">Read the Sacrament</router-link>
       <router-link to="/origins" class="cta-button">The Origins</router-link>
@@ -56,28 +57,28 @@ const daysUntil = ref(null)
 function calculateDaysUntil() {
   const today = new Date()
   const currentYear = today.getFullYear()
-  
-  // Christmas Too is February 25th
+
+  // Christmas 2 is February 25th
   let christmasToo = new Date(currentYear, 1, 25) // Month is 0-indexed
-  
-  // If Christmas Too has already passed this year, calculate for next year
+
+  // If Christmas 2 has already passed this year, calculate for next year
   if (today > christmasToo) {
     christmasToo = new Date(currentYear + 1, 1, 25)
   }
-  
+
   // Calculate difference in days
   const diffTime = christmasToo - today
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-  
+
   return diffDays
 }
 
 onMounted(() => {
   daysUntil.value = calculateDaysUntil()
-  
+
   // Easter egg: Console message
   console.log('He pulled a water out of his console. He would not drink himself.')
-  
+
   // Animate tree lights
   animateTreeLights()
 })
@@ -85,12 +86,12 @@ onMounted(() => {
 function animateTreeLights() {
   const colors = ['#ff0066', '#00ffff', '#ffcc00']
   const ornaments = document.querySelectorAll('.tree-ornament:not(:has(img))')
-  
+
   // Initial random colors
   ornaments.forEach(ornament => {
     ornament.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]
   })
-  
+
   // Change colors periodically
   setInterval(() => {
     ornaments.forEach(ornament => {
@@ -99,7 +100,7 @@ function animateTreeLights() {
       }, Math.random() * 500)
     })
   }, 2000)
-  
+
   // Add glowing effect to real ornaments
   const realOrnaments = document.querySelectorAll('.real-ornament')
   setInterval(() => {
@@ -170,6 +171,7 @@ function animateTreeLights() {
     opacity: 0.7;
     box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
   }
+
   100% {
     opacity: 1;
     box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffcc00;
@@ -287,7 +289,7 @@ function animateTreeLights() {
   transform: translateX(-50%);
   width: 140px;
   height: 220px;
-  background: linear-gradient(transparent, transparent), 
+  background: linear-gradient(transparent, transparent),
     radial-gradient(circle at 30% 40%, #ffcc00 1px, transparent 3px),
     radial-gradient(circle at 70% 60%, #ff0066 1px, transparent 3px),
     radial-gradient(circle at 45% 75%, #00ffff 1px, transparent 3px),
@@ -304,6 +306,7 @@ function animateTreeLights() {
   0% {
     opacity: 0.6;
   }
+
   100% {
     opacity: 1;
   }
@@ -558,15 +561,15 @@ h1 {
   h1 {
     font-size: 3rem;
   }
-  
+
   .tagline {
     font-size: 1.2rem;
   }
-  
+
   .description {
     font-size: 1rem;
   }
-  
+
   .cyber-tree-container {
     height: 250px;
   }

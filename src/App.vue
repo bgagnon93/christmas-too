@@ -7,7 +7,7 @@
       <div class="snow"></div>
       <div class="snow"></div>
     </div>
-    
+
     <div class="tinsel-container">
       <div class="tinsel tinsel-top">
         <img src="./assets/tinsel.png" alt="Tinsel decoration" />
@@ -22,14 +22,14 @@
         <img src="./assets/tinsel.png" alt="Tinsel decoration" />
       </div>
     </div>
-    
+
     <header>
       <div class="nav-container">
         <div class="logo" @click="navigateHome">
           <span class="neon-text">CHRISTMAS</span>
-          <span class="neon-text-alt">TOO</span>
+          <span class="neon-text-alt">2</span>
         </div>
-        
+
         <nav>
           <router-link to="/" class="nav-link">Home</router-link>
           <router-link to="/sacrament" class="nav-link">Sacrament</router-link>
@@ -38,7 +38,7 @@
         </nav>
       </div>
     </header>
-    
+
     <main>
       <router-view v-slot="{ Component }">
         <transition name="page-transition" mode="out-in">
@@ -46,10 +46,10 @@
         </transition>
       </router-view>
     </main>
-    
+
     <footer>
       <div class="footer-content">
-        <p>Christmas Too | February 25th</p>
+        <p>Christmas 2 | February 25th</p>
         <p class="footer-sacrament">60:00</p>
         <p class="copyright">Est. On Alex Cullen's 30th Birthday</p>
         <div class="christmas-ornament">
@@ -110,13 +110,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.1) 2px,
-    transparent 2px,
-    transparent 4px
-  );
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.1) 2px,
+      transparent 2px,
+      transparent 4px);
   pointer-events: none;
   z-index: 10;
   opacity: 0.3;
@@ -128,11 +126,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 0%,
-    rgba(0, 255, 255, 0.05) 100%
-  );
+  background: radial-gradient(ellipse at center,
+      transparent 0%,
+      rgba(0, 255, 255, 0.05) 100%);
   pointer-events: none;
   z-index: 11;
   opacity: 0.5;
@@ -155,7 +151,7 @@ body {
   top: -100px;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     radial-gradient(4px 4px at 10% 10%, rgba(255, 255, 255, 0.8) 50%, transparent 0%),
     radial-gradient(3px 3px at 20% 50%, rgba(255, 255, 255, 0.7) 50%, transparent 0%),
     radial-gradient(2px 2px at 30% 20%, rgba(255, 255, 255, 0.6) 50%, transparent 0%),
@@ -187,6 +183,7 @@ body {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(100vh);
   }
@@ -279,7 +276,8 @@ header {
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
   position: relative;
   z-index: 5;
-  margin-top: 15px; /* Accounting for tinsel */
+  margin-top: 15px;
+  /* Accounting for tinsel */
 }
 
 .nav-container {
@@ -363,8 +361,10 @@ main {
   background: linear-gradient(135deg, var(--dark-bg) 0%, #1a0022 100%);
   position: relative;
   z-index: 2;
-  margin: 0 15px; /* Accounting for tinsel */
-  min-height: calc(100vh - 150px); /* Ensuring main content fits with tinsel */
+  margin: 0 15px;
+  /* Accounting for tinsel */
+  min-height: calc(100vh - 150px);
+  /* Ensuring main content fits with tinsel */
 }
 
 /* Footer styles */
@@ -374,7 +374,8 @@ footer {
   border-top: 1px solid var(--neon-pink);
   position: relative;
   z-index: 5;
-  margin-bottom: 15px; /* Accounting for tinsel */
+  margin-bottom: 15px;
+  /* Accounting for tinsel */
 }
 
 .footer-content {
@@ -420,9 +421,12 @@ footer {
 }
 
 @keyframes swing {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: rotate(-5deg);
   }
+
   50% {
     transform: rotate(5deg);
   }
@@ -450,17 +454,17 @@ footer {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   nav {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .footer-content {
     justify-content: center;
     text-align: center;
   }
-  
+
   .footer-content p {
     width: 100%;
     margin-bottom: 0.5rem;
